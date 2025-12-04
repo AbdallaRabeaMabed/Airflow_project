@@ -1,0 +1,7 @@
+# Postgres provider for PostgresOperator
+apache-airflow-providers-postgres==5.12.0
+
+# Binary psycopg2 to avoid needing system-level build deps
+psycopg2-binary>=2.9
+
+
