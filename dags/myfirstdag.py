@@ -24,5 +24,16 @@ with DAG(
         postgres_conn_id='postgres_default',
         sql='sql/insert_data.sql'
     )
+    
+    select_data = PostgresOperator(
+        task_id='select_data',
+        postgres_conn_id='postgres_default',
+        sql=''' select * from customers where customers.birth_date between %(start_date)s and %(end_date)s; '''
+        ,
+        parameters={
+        "start_date":"{{ var.value.start_date }}",
+        "end_date":"{{ var.value.end_date }}"
+        }
+    )
 
-    create_table >> insert_data
+    create_table >> insert_data >> select_data
