@@ -9,7 +9,7 @@ with DAG(
     description='A simple DAG ',
     start_date=datetime(2025, 12, 4, 6, tzinfo=pendulum.timezone("Africa/Cairo")),
     dagrun_timeout=timedelta(minutes=45),
-    schedule='*/5 * * * *',
+    schedule='*/30 * * * *',
     catchup=False
 ) as dag:
     
